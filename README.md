@@ -115,6 +115,14 @@ Yerel ortamda testleri çalıştırmak için:
 mvn test
 ```
 
+### Test Sonuçları
+
+![Test Sonuçları](pngs/tests.png)
+
+Tüm testler (13 test) başarıyla geçmiştir:
+- TaskServiceTest: 5 test
+- TaskControllerTest: 8 test
+
 ## API Dokümantasyonu
 
 Swagger UI'a http://localhost:8080/swagger-ui.html adresinden erişebilirsiniz.
