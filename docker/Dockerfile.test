@@ -1,0 +1,10 @@
+FROM maven:3.8.4-openjdk-11-slim
+
+WORKDIR /app
+COPY . .
+
+# Download dependencies first
+RUN mvn dependency:go-offline
+
+# Run tests
+CMD ["mvn", "test"]

@@ -1,0 +1,20 @@
+# Maven
+target/
+*.war
+*.ear
+*.jar
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# Logs
+*.log
+
+# OS specific
+.DS_Store
+Thumbs.db

@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.app
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATA_MONGODB_HOST=mongodb
+    depends_on:
+      - mongodb
+
+  test:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.test
+    environment:
+      - SPRING_DATA_MONGODB_HOST=mongodb
+    depends_on:
+      - mongodb
+    volumes:
+      - ./target/surefire-reports:/app/target/surefire-reports
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+volumes:
+  mongodb_data:
